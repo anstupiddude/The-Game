@@ -13,9 +13,8 @@ public class FPSController : MonoBehaviour
     public float gravity = 20.0f;
     
     [Header("Cam Options")]
-    public Camera cam;
-    public float mouseHorizontal = 3.0f;
-    public float mouseVertical = 2.0f;
+    [SerializeField] private Camera cam;
+    public float mouseSensitivity;
     public float minRotation = -65.0f;
     public float maxRotation = 60.0f;
     float h_mouse, v_mouse;
@@ -31,10 +30,10 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
-        h_mouse = mouseHorizontal * Input.GetAxis("Mouse X");
-        v_mouse += mouseVertical * Input.GetAxis("Mouse Y");
+        h_mouse = mouseSensitivity * Input.GetAxis("Mouse X");
+        v_mouse += mouseSensitivity * Input.GetAxis("Mouse Y");
 
-        v_mouse = Mathf.Clamp(v_mouse, minRotation, maxRotation);
+        v_mouse = Mathf.Clamp(v_mouse, -65.0f, 60.0f);
         cam.transform.localEulerAngles = new Vector3(-v_mouse, 0, 0);
         transform.Rotate(0, h_mouse, 0);
 
