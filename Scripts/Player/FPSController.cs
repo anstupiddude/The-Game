@@ -15,8 +15,6 @@ public class FPSController : MonoBehaviour
     [Header("Cam Options")]
     [SerializeField] private Camera cam;
     public float mouseSensitivity;
-    public float minRotation = -65.0f;
-    public float maxRotation = 60.0f;
     float h_mouse, v_mouse;
 
     private Vector3 move = Vector3.zero;
